@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>数当てゲーム</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="game-card">
+    <p class="eyebrow">NUMBER GUESSING GAME</p>
+    <h1>数当てゲーム</h1>
+    <p class="description">コンピューターが考えた1〜100の数字を当てよう！</p>
+
+    <section class="game-panel" aria-label="ゲーム画面">
+      <label for="guessInput">数字を入力してください</label>
+      <div class="input-row">
+        <input id="guessInput" type="number" min="1" max="100" placeholder="例：50" autocomplete="off">
+        <button id="guessButton" type="button">判定する</button>
+      </div>
+
+      <p id="message" class="message" aria-live="polite">1〜100の数字を入力して、判定ボタンを押してください。</p>
+
+      <div class="stats">
+        <div>
+          <span class="stat-label">挑戦回数</span>
+          <strong id="attempts">0</strong>回
+        </div>
+        <div>
+          <span class="stat-label">ヒント</span>
+          <strong id="range">1〜100</strong>
+        </div>
+      </div>
+
+      <button id="resetButton" class="reset-button" type="button">もう一度遊ぶ</button>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

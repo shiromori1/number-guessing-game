@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap');
+
+:root {
+  color-scheme: light;
+  --ink: #1c2140;
+  --muted: #6c7290;
+  --primary: #6757e8;
+  --primary-dark: #5041c8;
+  --panel: #f5f3ff;
+  --success: #14805e;
+  --error: #c34e54;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  font-family: 'Noto Sans JP', system-ui, sans-serif;
+  color: var(--ink);
+  background: linear-gradient(135deg, #dcd8ff, #f8e9e1);
+}
+
+.game-card {
+  width: min(100%, 520px);
+  padding: 42px 38px 38px;
+  text-align: center;
+  background: rgba(255, 255, 255, .92);
+  border: 1px solid rgba(255, 255, 255, .8);
+  border-radius: 28px;
+  box-shadow: 0 22px 60px rgba(53, 43, 112, .18);
+}
+
+.eyebrow { margin: 0 0 10px; color: var(--primary); font-size: 12px; font-weight: 900; letter-spacing: .18em; }
+h1 { margin: 0; font-size: clamp(32px, 8vw, 48px); line-height: 1.2; }
+.description { margin: 14px 0 30px; color: var(--muted); }
+.game-panel { padding: 26px; text-align: left; background: var(--panel); border-radius: 20px; }
+label { display: block; margin-bottom: 10px; font-size: 14px; font-weight: 700; }
+.input-row { display: flex; gap: 10px; }
+input { min-width: 0; flex: 1; padding: 14px 16px; border: 2px solid #ddd9fa; border-radius: 12px; color: var(--ink); font: inherit; font-size: 18px; background: white; }
+input:focus { outline: 3px solid rgba(103, 87, 232, .2); border-color: var(--primary); }
+button { border: 0; border-radius: 12px; color: white; background: var(--primary); font: inherit; font-weight: 700; cursor: pointer; transition: transform .15s, background .15s; }
+button:hover { background: var(--primary-dark); transform: translateY(-1px); }
+button:active { transform: translateY(0); }
+#guessButton { padding: 0 18px; white-space: nowrap; }
+.message { min-height: 52px; margin: 20px 0; padding: 14px; border-radius: 12px; text-align: center; font-weight: 700; background: white; }
+.message.success { color: var(--success); background: #e7f8f0; }
+.message.error { color: var(--error); background: #fff0f0; }
+.stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+.stats > div { padding: 12px; text-align: center; background: white; border-radius: 12px; }
+.stat-label { display: block; margin-bottom: 3px; color: var(--muted); font-size: 12px; }
+.stats strong { font-size: 20px; }
+.reset-button { display: block; width: 100%; padding: 13px; color: var(--primary-dark); background: white; }
+.reset-button:hover { color: white; }
+
+@media (max-width: 460px) {
+  .game-card { padding: 32px 20px 24px; }
+  .game-panel { padding: 20px 16px; }
+  .input-row { flex-direction: column; }
+  #guessButton { padding: 13px; }
+}
