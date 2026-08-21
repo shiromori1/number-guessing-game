@@ -3,33 +3,69 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>数当てゲーム</title>
+  <meta name="description" content="1から100までの数字を10回以内に当てるゲームです。">
+  <title>10回チャレンジ！数当てゲーム</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main class="game-card">
-    <p class="eyebrow">NUMBER GUESSING GAME</p>
-    <h1>数当てゲーム</h1>
-    <p class="description">コンピューターが考えた1〜100の数字を当てよう！</p>
+  <main id="gameCard" class="game-card">
+    <header class="game-header">
+      <p class="eyebrow"><span aria-hidden="true">🎯</span> 10回チャレンジ</p>
+      <h1>数当てゲーム</h1>
+      <p class="description">コンピューターが選んだ1〜100の数字を当てよう！</p>
+      <div class="rule-tags" aria-label="ゲームのルール">
+        <span>数字は1〜100</span>
+        <span>挑戦は10回まで</span>
+      </div>
+    </header>
 
     <section class="game-panel" aria-label="ゲーム画面">
-      <label for="guessInput">数字を入力してください</label>
-      <div class="input-row">
-        <input id="guessInput" type="number" min="1" max="100" placeholder="例：50" autocomplete="off">
-        <button id="guessButton" type="button">判定する</button>
-      </div>
+      <form id="guessForm" novalidate>
+        <label for="guessInput">予想した数字</label>
+        <div class="input-row">
+          <input
+            id="guessInput"
+            type="number"
+            min="1"
+            max="100"
+            step="1"
+            inputmode="numeric"
+            enterkeyhint="done"
+            placeholder="例：50"
+            autocomplete="off"
+            aria-describedby="message"
+          >
+          <button id="guessButton" type="submit">判定する</button>
+        </div>
+      </form>
 
-      <p id="message" class="message" aria-live="polite">1〜100の数字を入力して、判定ボタンを押してください。</p>
+      <p id="message" class="message" role="status" aria-live="polite">
+        数字を入力して、判定ボタンを押してください。
+      </p>
 
       <div class="stats">
-        <div>
+        <div class="stat-card">
           <span class="stat-label">挑戦回数</span>
-          <strong id="attempts">0</strong>回
+          <strong id="attempts">0</strong><span> / 10回</span>
         </div>
-        <div>
-          <span class="stat-label">ヒント</span>
+        <div class="stat-card remaining-card">
+          <span class="stat-label">残り回数</span>
+          <strong id="remaining">10</strong><span>回</span>
+        </div>
+        <div class="stat-card range-card">
+          <span class="stat-label">答えがありそうな範囲</span>
           <strong id="range">1〜100</strong>
         </div>
+      </div>
+
+      <div class="progress-area">
+        <label for="attemptProgress">挑戦の進み具合</label>
+        <progress id="attemptProgress" max="10" value="0">0 / 10</progress>
+      </div>
+
+      <div class="history-area">
+        <span class="history-label">これまでの予想</span>
+        <p id="guessHistory" class="guess-history">まだありません</p>
       </div>
 
       <button id="resetButton" class="reset-button" type="button">もう一度遊ぶ</button>
@@ -39,3 +75,4 @@
   <script src="script.js"></script>
 </body>
 </html>
+
